@@ -1,8 +1,8 @@
 # Artifact for FoSSaCS 2023
 
 *Title:* [Artifact84] \<Explainability of Probabilistic Bisimilarity Distances for Labelled Markov Chains\>  
-*URL:* the URL pointing to a single file containing the artifact - Zenodo, Figshare, Google Drive, Dropbox, Github, Bitbucket, or (public) Gitlab URL  
-*md5 hash:* the md5 hash of the single artifact file (use the md5 or md5sum command-line tool to generate the hash)
+*URL:* https://drive.google.com/file/d/1j_WnoYUlTVp5O1nFQhxj-6cRvNPhzWhX/view?usp=sharing  
+*md5 hash:* 80B87DE858219B422AFE80B26A3C78B4
 
 ## Getting Started Guide
 
