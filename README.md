@@ -10,8 +10,8 @@
 2. Unzip the file.
 3. Load the image in docker: docker load -i explainability.tar
 4. Run docker with a pseudo-TTY : docker run --name explainability -it explainability sh
-5. Run the build with the gradle wrapper: .\gradlew -x test
-6. (Optional) Run the tests with the gradle wrapper: .\gradlew test (this may take a few minutes)
+5. Run the build with the gradle wrapper: ./gradlew -x test
+6. (Optional) Run the tests with the gradle wrapper: ./gradlew test (this may take a few minutes)
 
 To use code, you need to create two files that, together, represent a labelled Markov chain.  The one file contains the transitions.  The name of this file should end with .tra.  The other file contains the labelling of the states.  The name of this file should end with .lab.
 
@@ -258,7 +258,7 @@ Iteration 3
 
 ### Generate the Documentation
 
-Run javadoc: .\gradlew javadoc  
+Run javadoc: ./gradlew javadoc  
 The documentation can be found the directory build/docs/javadoc/.
 
 ### Run the Code on Other Examples
