@@ -6,12 +6,12 @@
 
 ## Getting Started Guide
 
-1. Download the file explainability.tar.zip from https://drive.google.com/file/d/1j_WnoYUlTVp5O1nFQhxj-6cRvNPhzWhX/view?usp=sharing  
+1. Download the file explainability.zip from https://drive.google.com/file/d/1j_WnoYUlTVp5O1nFQhxj-6cRvNPhzWhX/view?usp=sharing  
 2. Unzip the file.
 3. Load the image in docker: docker load -i explainability.tar
-4. Run docker with a pseudo-TTY : docker run --name explainability -it explainability sh
+4. Run docker with a pseudo-TTY : docker run -it explainability sh
 5. Run the build with the gradle wrapper: ./gradlew -x test
-6. (Optional) Run the tests with the gradle wrapper: ./gradlew test (this may take a few minutes)
+6. (Optional) Run the tests with the gradle wrapper: ./gradlew test (this may take a few minutes - sometimes fails with a java.lang.OutOfMemoryError)
 
 To use code, you need to create two files that, together, represent a labelled Markov chain.  The one file contains the transitions.  The name of this file should end with .tra.  The other file contains the labelling of the states.  The name of this file should end with .lab.
 
