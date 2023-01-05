@@ -82,7 +82,7 @@ digraph LabelledMarkovChain {
 ```
 The above file can be viewed using Graphviz.
 
-8. Compute the probabilistic bisimilarity distances for the labelled Markov chain: java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" ComputeDistances src/examples/example-2
+8. Compute the probabilistic bisimilarity distances for the labelled Markov chain: java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar ComputeDistances src/examples/example-2
 
 This application generates a file, named example-2.dist, which contains the probabilistic bisimilarity distances for the labelled Markov chain.  The file can be found in the directory src/examples/.  It should have the following content.
 ```
@@ -99,7 +99,7 @@ This application generates a file, named example-2.dist, which contains the prob
 ```
 Note that the distance of states 0 and 1 is 0.125, as claimed in the paper on page 2-3.
 
-9. Generate the first three formulas of a sequence of formulas that explains the distance of a pair of states: java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" GenerateFormulas src/examples/example-2 0 1
+9. Generate the first three formulas of a sequence of formulas that explains the distance of a pair of states: java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar GenerateFormulas src/examples/example-2 0 1
 
 This application generates a file, named example-2.txt, which contains the first three formulas of the sequence of formulas that explains the probabilistic bisimilarity distance of states 0 and 1.  The file can be found in the directory src/examples/.  It should have the following content.
 ```
@@ -109,7 +109,7 @@ true
 
 (O [(((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)) || ((true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0) && (true + 0.0)))] - 0.0)
 ```
-10. Same as 9, but the formulas are provided in LaTeX: java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" GenerateFormulasInLaTeX src/examples/example-2 0 1
+10. Same as 9, but the formulas are provided in LaTeX: java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar GenerateFormulasInLaTeX src/examples/example-2 0 1
 
 This application generates a file, named example-2.txt, which contains the first three formulas in LaTeX of the sequence of formulas that explains the probabilistic bisimilarity distance of states 0 and 1.  The file can be found in the directory src/examples/.  It should have the following content.
 ```
@@ -121,7 +121,7 @@ This application generates a file, named example-2.txt, which contains the first
 ```
 Note that the third formula is the one given on page 11.
 
-11. Same as 9, but the formulas are simplified: java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" GenerateSimplifiedFormulas src/examples/example-2 0 1
+11. Same as 9, but the formulas are simplified: java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar GenerateSimplifiedFormulas src/examples/example-2 0 1
 
 This application generates a file, named example-2.txt, which contains the first three formulas of the sequence of formulas that explains the probabilistic bisimilarity distance of states 0 and 1.  The formulas are equivalent to the ones generated above, but considerably simpler.  The file can be found in the directory .src/examples/.  It should have the following content.
 ```
@@ -131,7 +131,7 @@ true
 
 O [true]
 ```
-12. Same as 11, but the formulas are provided in LaTeX: java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" GenerateSimplifiedFormulasInLaTeX src/examples/example-2 0 1
+12. Same as 11, but the formulas are provided in LaTeX: java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar GenerateSimplifiedFormulasInLaTeX src/examples/example-2 0 1
 
 This application generates a file, named example-2.txt, which contains the first three formulas of the sequence of formulas that explains the probabilistic bisimilarity distance of states 0 and 1.  Again, the formulas are simplified.  The formulas are given in LaTeX.  The file can be found in the directory src/examples/.  It should have the following content.
 ```
@@ -151,7 +151,7 @@ All experiments should take less than one second.
 *How:*  See step 8 of the Getting Started Guide.
 
 *Claim:* $\delta(s, t) = \frac{7}{8}$ (page 8).  
-*How:*  java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" ComputeDistances src/examples/example-8  
+*How:*  java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar ComputeDistances src/examples/example-8  
 This application generates a file, named example-8.dist, which contains the probabilistic bisimilarity distances for the labelled Markov chain.  The file can be found in the directory src/examples/.  It should have the following content.
 ```
 0.000	0.875	0.000	0.750	1.000	0.000	1.000	
@@ -165,7 +165,7 @@ This application generates a file, named example-8.dist, which contains the prob
 The states 0 and 1 have distance 0.875.
 
 *Claim:* $\delta(s, t) = 1$ (page 9).  
-*How:*  java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" ComputeDistances src/examples/example-9  
+*How:*  java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar ComputeDistances src/examples/example-9  
 This application generates a file, named example-9.dist, which contains the probabilistic bisimilarity distances for the labelled Markov chain.  The file can be found in the directory src/examples/.  It should have the following content.
 ```
 0.000	1.000	1.000	
@@ -181,7 +181,7 @@ The states 0 and 1 have distance one.
 *How:*  See step 12 of the Getting Started Guide.  
 
 *Claim:* The formula $\varphi_{st}^2$ fills more than a page (see Appendix E) (page 11).  
-*How:* java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" explainability.lmc.Explanation src/examples/example-2 latex 4 0 1  
+*How:* java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar explainability.lmc.Explanation src/examples/example-2 latex 4 0 1  
 This application generates a file, named example-2.tex, which contains the first four formulas in LaTeX of the sequence of formulas that explains the probabilistic bisimilarity distance of states 0 and 1. The file can be found in the directory src/examples/. It should have the following content.
 ```
 Iteration 0
@@ -200,7 +200,7 @@ Iteration 3
 
 *Claim:* but can be simplified to $(\bigcirc (\bigcirc \ell_0) \vee \ell_1) \ominus 0.375$ (page 11).  
 *Note:*  There is a typo in the paper: $(\bigcirc (\bigcirc \ell_0) \vee \ell_0) \ominus 0.375$.  
-*How:*  java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" explainability.lmc.Explanation src/examples/example-2 simplified latex 4 0 1  
+*How:*  java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar explainability.lmc.Explanation src/examples/example-2 simplified latex 4 0 1  
 This application generates a file, named example-2.tex, which contains the first four simplified formulas in LaTeX of the sequence of formulas that explains the probabilistic bisimilarity distance of states 0 and 1. The file can be found in the directory src/examples/. It should have the following content.
 ```
 Iteration 0
@@ -218,7 +218,7 @@ Iteration 3
 ```
 
 *Claim:* The formula $\varphi_{ts}^2$ is also provided in Appendix E (page 11).  
-*How:* java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" explainability.lmc.Explanation src/examples/example-2 latex 4 1 0   
+*How:* java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar explainability.lmc.Explanation src/examples/example-2 latex 4 1 0   
 This application generates a file, named example-2.tex, which contains the first four formulas in LaTeX of the sequence of formulas that explains the probabilistic bisimilarity distance of states 1 and 0. The file can be found in the directory src/examples/. It should have the following content.
 ```
 Iteration 0
@@ -237,7 +237,7 @@ Iteration 3
 
 *Claim:* can be simplified to $(\bigcirc (\ell_1 \vee \bigcirc \ell_1)) \ominus 0.5$ (page 11).  
 *Note:* There is a typo in the paper: $(\bigcirc \bigcirc \ell_1) \ominus 0.5$.  
-*How:* java -cp "build/libs/explainability.jar;lib/commons-math3-3.6.1.jar" explainability.lmc.Explanation src/examples/example-2 simplified latex 4 1 0    
+*How:* java -cp build/libs/explainability.jar:lib/commons-math3-3.6.1.jar explainability.lmc.Explanation src/examples/example-2 simplified latex 4 1 0    
 This application generates a file, named example-2.tex, which contains the first four simplified formulas in LaTeX of the sequence of formulas that explains the probabilistic bisimilarity distance of states 1 and 0. The file can be found in the directory src/examples/. It should have the following content.
 ```
 Iteration 0
