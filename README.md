@@ -6,7 +6,7 @@
 
 ## Getting Started Guide
 
-1. Download the file explainability.tar.zip from
+1. Download the file explainability.tar.zip from https://drive.google.com/file/d/1j_WnoYUlTVp5O1nFQhxj-6cRvNPhzWhX/view?usp=sharing  
 2. Unzip the file.
 3. Load the image in docker: docker load -i explainability.tar
 4. Run docker with a pseudo-TTY : docker run --name explainability -it explainability sh
