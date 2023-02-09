@@ -1,3 +1,133 @@
+# Java Code to Explain Probabilistic Bisimilarity Distances for Labelled Markov Chains
+
+Probabilistic bisimilarity distances [3] measure the similarity of behaviour of states of a labelled Markov chain.  The smaller the distance between two states, the more alike they behave.  Their distance is zero if and only if they are probabilistic bisimilar.  Recently, algorithms have been developed that can compute probabilistic bisimilarity distances for labelled Markov chains with thousands of states within seconds.  However, say we compute that the distance of two states is 0.125.  How does one explain that 0.125 captures the similarity of their behaviour?
+
+In [2], we address this question by returning to the definition of probabilistic bisimilarity distances proposed by Desharnais, Gupta, Jagadeesan, and Panangaden [1] more than two decades ago.  We use a slight variation of their logic to construct for each pair of states a sequence of formulas that explains the probabilistic bisimilarity distance of the states.  Furthermore, we present an algorithm that computes those formulas and we show that each formula can be computed in polynomial time.  Here, we provide an implementation of that algorithm in Java.
+
+[1] Josée Desharnais, Vineet Gupta, Radha Jagadeesan, and Prakash Panangaden.  Metrics for labeled Markov systems.  In Jos Baeten and Sjouke Mauw, editors, *Proceedings of the 10th International Conference on Concurrency Theory*, volume 1664 of *Lecture Notes in Computer Science*, pages 258-273, Eindhoven, The Netherlands, August 1999.  Springer-Verlag.
+
+[2] Amgad Rady and Franck van Breugel.  Explainability of probabilistic bisimilarity distances for labelled Markov chains.  In Pawel Sobocinski and Orna Kupferman, editors, *Proceedings of the 26th International Conference on Foundations of Software Science and Computational Structures*, Paris, France, April 2023.
+
+[3] Franck van Breugel.  Probabilistic bisimilarity distances. *ACM SIGLOG News*, 4(4), 33-51, October 2017.
+
+## Installing the software
+
+1. Use [Java](https://www.oracle.com/ca-en/java/technologies/downloads/), at least version 8.  To check which version of Java (if any) is currently in use, issue the following command.
+```
+> javac -version
+javac 1.8.0_241
+```
+
+2. Unzip the downloaded file.
+
+3. Build the software with the Gradle wrapper (you do not need to install Gradle): inside the directory, issue the following command.
+```
+> .\gradlew -x test
+[some text deleted]
+
+BUILD SUCCESSFUL in 1s
+2 actionable tasks: 2 executed
+```
+
+4. (Optional)  To run the tests, issue the following command.
+```
+> .\gradlew test
+[some text deleted]
+
+> Task :test
+Test execution: SUCCESS
+Summary: 119133 tests, 119133 passed,0 failed, 0 skipped
+
+BUILD SUCCESSFUL in 4m 12s
+4 actionable tasks: 3 executed, 1 up-to-date
+```
+
+## Using the software
+
+To use sofware, you need to create two files that, together, represent a labelled Markov chain.  The one file contains the transitions.  The name of this file should end with .tra.  The other file contains the labelling of the states.  The name of this file should end with .lab.
+
+The file describing the transitions starts with a line containing the number of states and the number of transitions.  The remaining lines each represent a transition: the source state, the target state, and the probability.  The states are represented by non-negative integers.  Consider the following (content of a) file.
+```
+10 12 
+0 2 0.5
+0 3 0.5
+1 4 0.625
+1 5 0.375
+2 6 1
+3 7 1
+4 8 1
+5 9 1
+6 6 1
+7 7 1
+8 8 1
+9 9 1
+```
+The labelled Markov chain has 10 states and 12 transitions.  From state 1 it can transition to state 4 with probability 0.625 and to state 5 with probability 0.375.
+
+The file describing the state labelling contains a line for every state.  Such a line consists of the state, a colon, and the label of the state.  The labels are represented by non-negative integers.  Consider the following (content of a) file.
+```
+0: 0
+1: 0
+2: 0
+3: 0
+4: 0
+5: 0
+6: 1
+7: 0
+8: 1
+9: 0
+```
+All states are labelled 0 apart from states 6 and 8, which are labelled 1.
+
+To run the software, ensure that the jar file explainability.jar, which can be found in the build directory, as well as the jar file commons-math3-3.6.1.jar, which has been downloaded by the Gradle script, are both part of Java's classpath.
+
+Assume that the transitions and labelling can be found in the files example.tra and example.lab, respectively.  To generate, for each pair of states, five formulas that explain their distances, issue the following command.
+```
+java explainability.lmc.Explanation example
+```
+A file, named example.txt, is created with five formulas for each state pair.
+
+There are several additional command line arguments.  These are all optional and can be provided in any combination.  To generate formulas that are simplified, issue the following command.
+```
+java explainability.lmc.Explanation example simplified
+```
+A file, named example.txt, is created with five simplified formulas for each state pair.
+
+To generate the formulas in LaTeX format, issue the following command.
+```
+java explainability.lmc.Explanation example LaTeX
+```
+A file, named example.tex, is created with five formulas in LaTeX format for each state pair.
+
+To generate for each pair of states a given number, say seven (rather than five), of formulas, issue the following command.
+```
+java explainability.lmc.Explanation example 7
+```
+A file, named example.txt, is created with seven formulas for each state pair.
+
+To generate only for a given state pair, say (0, 1), the formulas, issue the following command.
+```
+java explainability.lmc.Explanation example 0 1
+```
+A file, named example.txt, is created with five formulas for the state pair (0, 1).
+
+The above described options can be combined by issuing the following command.
+```
+java explainability.lmc.Explanation <base name> <simplified> <text or LaTeX> <number of formulas> <state number> <state number>
+```
+where
+- `<base name>` is the base name of the transition probabilities and labels files as well as the formulas file. For example, if `<base name>` is example, then the file example.tra contains the transition probabilities of of the labelled Markov chain, the file example.lab contains the labelling of the labelled Markov chain, and the file example.txt or example.tex contains the formulas that explain the probabilistic bisimilarity distances of the labelled Markov chain.
+- `<simplified>` is optional.  Its default value is not simplified.  It captures whether the formulas should be simplified.
+- `<text or LaTeX>` is optional.  Its default value is text.  It captures whether the formulas are written in text or LaTeX format.  If `<base name>` is example and `<text or LaTeX>` is text, then the formulas are written to the file example.txt.  If `<base name>` is example and `<text or LaTeX>` is LaTeX, then the formulas are written to the file example.tex.
+- `<number of formulas>` is optional.  Its default value is 5.  It captures the number of formulas, forming a sequence, that are generated to explain the probabilistic bisimilarity distance for each pair of states.
+- `<state number> <state number>` is optional.  If a pair of state numbers is provided, then only the formulas for the given pair of states are written.  Otherwise, all state pairs are considered.
+
+
+
+
+
+
+
 # Artifact for FoSSaCS 2023
 
 *Title:* [Artifact84] \<Explainability of Probabilistic Bisimilarity Distances for Labelled Markov Chains\>  
